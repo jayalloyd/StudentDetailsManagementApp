@@ -28,6 +28,11 @@ public class StudentController {
         service.addStudent(student);
         return student;
     }
+@DeleteMapping("/delete")
+public Student deleteStudent(@RequestBody  Student  student){
+        service.deleteStudentBycourseName(student.getCourseName());
+        return  student;
+}
 
 
 

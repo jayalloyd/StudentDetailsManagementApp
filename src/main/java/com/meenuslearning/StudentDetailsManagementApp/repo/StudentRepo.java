@@ -18,5 +18,8 @@ public interface StudentRepo extends PagingAndSortingRepository<Student,Integer>
     @Query("SELECT s FROM Student s WHERE s.sName = :sName ")
     Page<Student> findByCriteria(@Param("sName") String sName, PageRequest pr);
 
-
+    @Modifying
+    @Transactional
+    @Query( "DELETE  FROM Student s WHERE s.courseName = :courseName ")
+    void deleteByCourseName(String courseName);
 }

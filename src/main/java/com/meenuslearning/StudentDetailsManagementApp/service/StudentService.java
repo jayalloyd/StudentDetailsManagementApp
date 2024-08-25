@@ -27,4 +27,7 @@ public class StudentService {
     }
 
 
+    public void deleteStudentBycourseName(String courseName) {
+        repo.deleteByCourseName(courseName);
+    }
 }
