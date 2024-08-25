@@ -3,7 +3,7 @@ StudentDetailsManagementApp-BackEnd Implemented
 
 ## Overview
 
-Managing Student Details - adding,saving implemented using Spring Data jpa pagination
+Managing Student Details - adding,deleting the records and  searching implemented using Spring Data jpa pagination
 
 
 ## Technologies Used
