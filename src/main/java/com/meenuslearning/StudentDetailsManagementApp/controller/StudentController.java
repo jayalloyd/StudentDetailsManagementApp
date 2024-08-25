@@ -5,7 +5,6 @@ import com.meenuslearning.StudentDetailsManagementApp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.querydsl.QPageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,15 +22,18 @@ public class StudentController {
            return service.getStudentDetails(student.getsName(),pr);
     }
     @PostMapping("/add")
-    public Student addStudent(@RequestBody Student student){
-
-        service.addStudent(student);
+    public Student addStudent(@RequestBody Student student) {
+        service.addStudent(student.getsName(), student.getMarks(), student.getCourseName());
         return student;
     }
-@DeleteMapping("/delete")
-public Student deleteStudent(@RequestBody  Student  student){
-        service.deleteStudentBycourseName(student.getCourseName());
-        return  student;
+
+    @DeleteMapping("/delete")
+public ResponseEntity<Void>deleteStudentsByCourseName(@RequestBody Student student)
+{
+ service.deleteStudentBycourseName(student.getCourseName());
+return ResponseEntity.noContent().build();//no content response indicating delete was successful
+
+
 }
 
 

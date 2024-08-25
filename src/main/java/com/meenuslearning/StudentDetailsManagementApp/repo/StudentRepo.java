@@ -11,10 +11,10 @@ import org.springframework.data.repository.query.Param;
 
 public interface StudentRepo extends PagingAndSortingRepository<Student,Integer> {
 
-    @Modifying
     @Transactional
-//    @Query(value = "INSERT INTO student (sName,marks,courseName ) VALUES (:sName, :marks,:courseName)", nativeQuery = true)
-    void save(Student student);
+    @Modifying
+    @Query(value = "INSERT INTO student (name, marks, course_name) VALUES (:sName, :marks, :courseName)", nativeQuery = true)
+    void save(@Param("sName") String sName, @Param("marks") int marks, @Param("courseName") String courseName);
     @Query("SELECT s FROM Student s WHERE s.sName = :sName ")
     Page<Student> findByCriteria(@Param("sName") String sName, PageRequest pr);
 

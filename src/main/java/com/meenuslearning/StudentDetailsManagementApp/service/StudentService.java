@@ -2,6 +2,8 @@ package com.meenuslearning.StudentDetailsManagementApp.service;
 
 import com.meenuslearning.StudentDetailsManagementApp.model.Student;
 import com.meenuslearning.StudentDetailsManagementApp.repo.StudentRepo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,8 +17,9 @@ public class StudentService {
     @Autowired
 
     private StudentRepo repo;
-    public  void addStudent(Student student) {
-        repo.save(student);
+
+    public void addStudent(String sName, int marks, String courseName) {
+        repo.save(sName, marks, courseName);
     }
 
 
@@ -28,6 +31,7 @@ public class StudentService {
 
 
     public void deleteStudentBycourseName(String courseName) {
+
         repo.deleteByCourseName(courseName);
     }
 }

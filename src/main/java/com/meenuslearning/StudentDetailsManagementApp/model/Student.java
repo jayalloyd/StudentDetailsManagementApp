@@ -8,14 +8,15 @@ import lombok.Getter;
 @Data
 @Table(name="student")
 public class Student {
-
-//    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
 @Id
+@Column(name="id")
 private int id;
-
+@Column(name="name")
 private String sName;
-
+@Column(name="marks")
 private int marks;
+@Column(name="course_name")
 private String courseName;
 
     public Student() {
